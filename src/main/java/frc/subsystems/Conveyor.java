@@ -50,33 +50,38 @@ public class Conveyor extends SubsystemBase {
 
   public boolean detectFront() {
     boolean status = false;
-    if(frontSensor.getRangeInches() < 5){
-      status = true;
+    double dist = frontSensor.getRangeInches();
+    if ((dist >= 6) && (dist<=8.5)) {
+      status = false;
     }
     else {
-      status = false;
+      status = true;
     }
     return status;
   }
 
   public boolean detectMiddle() {
     boolean status = false;
-    if(middleSensor.getRangeInches() < 5){
-      status = true;
+    double dist = middleSensor.getRangeInches();
+
+    if ((dist >= 6) && (dist<=8.5)) {
+      status = false;
     }
     else {
-      status = false;
+      status = true;
     }
     return status;
   }
 
   public boolean detectBack() {
     boolean status = false;
-    if(backSensor.getRangeInches() < 5){
-      status = true;
+    double dist = backSensor.getRangeInches();
+
+    if((dist >= 6) && (dist<=8.5)) {
+      status = false;
     }
     else {
-      status = false;
+      status = true;
     }
     return status;
   }

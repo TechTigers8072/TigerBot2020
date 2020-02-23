@@ -29,12 +29,21 @@ public class AutoConveyor extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if(m_conveyor.autoConvey == true)
-    {
-      boolean isBall1 = m_conveyor.detectFront();
-      boolean isBall2 = m_conveyor.detectMiddle();
-      boolean isBall3 = m_conveyor.detectBack();
+    boolean isBall1 = m_conveyor.detectFront();
+    boolean isBall2 = m_conveyor.detectMiddle();
+    boolean isBall3 = m_conveyor.detectBack();
 
+    if (Math.abs(m_gamepad.getY(Joystick.Hand.kRight)) > 0.1)
+    {
+      if (m_gamepad.getRawButtonPressed(5)){
+        m_conveyor.moveMotor();
+      }
+      else if (isBall3 == false){
+        m_conveyor.moveMotor();
+      }
+    }
+    else{
+      // auto convey is on
       if(isBall1 == false && isBall2 == false && isBall3 == false)
       {
         m_conveyor.stopMotor();
@@ -43,19 +52,12 @@ public class AutoConveyor extends CommandBase {
       {
         m_conveyor.moveMotor();
       }
-      else if(isBall3 == true)
+      else
       {
         m_conveyor.stopMotor();
       }
     }
-    else if(Math.abs(m_gamepad.getY(Joystick.Hand.kRight)) > 0.1)
-    {
-      m_conveyor.autoConvey = false;
-      m_conveyor.motorJoystick(m_gamepad.getY(Joystick.Hand.kRight));
-    }
-    else{
-      m_conveyor.autoConvey = true;
-    }
+    
   }
 
   // Called once the command ends or is interrupted.
