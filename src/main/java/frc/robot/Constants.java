@@ -23,4 +23,4 @@ public class Constants {
     public static final int SHOOTER_MOTOR                   = 9;
     
     public static final int CAN_CONVEYOR                    = 8;    
-}
+    public static final int ELEVATOR_MOTOR                  = 11;
