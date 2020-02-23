@@ -17,17 +17,39 @@ public class Shooter extends SubsystemBase {
   /**
    * Creates a new Shooter.
    */
+
+   private double speed;
+   private final double speedIncrement = 0.5;
+   private boolean isShooterOn;
+
   WPI_TalonSRX shooterMotor;
   public Shooter() {
     shooterMotor = new WPI_TalonSRX(Constants.SHOOTER_MOTOR);
+    speed = 6;
+    isShooterOn = false;
   }
 
 public void shooterOn(){
-  shooterMotor.setVoltage(8);
+  shooterMotor.setVoltage(speed);
+  isShooterOn = true;
 }
 
 public void shooterOff(){
   shooterMotor.setVoltage(0);
+  isShooterOn = false;
+}
+
+public void increaseSpeed(){
+  speed += speedIncrement;
+}
+
+public void decreaseSpeed(){
+  speed -= speedIncrement;
+}
+
+
+public boolean isShooterOn() {
+  return isShooterOn;
 }
 
   @Override
