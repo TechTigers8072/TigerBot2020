@@ -20,7 +20,7 @@ public class Constants {
     public static final int CAN_INTAKE                      = 5;
     public static final int CAN_DRAWBRIDGE_LEFT             = 6;
     public static final int CAN_DRAWBRIDGE_RIGHT            = 7;
-    public static final int SHOOTER_MOTOR                   = 8;
+    public static final int SHOOTER_MOTOR                   = 9;
     
-    public static final int CAN_CONVEYOR                    = 10;    
+    public static final int CAN_CONVEYOR                    = 8;    
 }

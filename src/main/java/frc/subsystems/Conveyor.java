@@ -25,7 +25,7 @@ public class Conveyor extends SubsystemBase {
   Ultrasonic frontSensor;
   Ultrasonic middleSensor;
   Ultrasonic backSensor;
-  WPI_VictorSPX conveyorMotor;
+  WPI_TalonSRX conveyorMotor;
   public boolean autoConvey = true;
 
 	public Conveyor() {
@@ -33,7 +33,7 @@ public class Conveyor extends SubsystemBase {
     middleSensor = new Ultrasonic(3, 4);
     backSensor = new Ultrasonic(5, 6);
 
-    conveyorMotor = new WPI_VictorSPX(Constants.CAN_CONVEYOR);
+    conveyorMotor = new WPI_TalonSRX(Constants.CAN_CONVEYOR);
   }
   
   public void moveMotor() {
