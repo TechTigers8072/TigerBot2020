@@ -13,15 +13,9 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.Command;
 
 //Subsystems Imports
-import frc.subsystems.Drivetrain;
-import frc.subsystems.Conveyor;
-import frc.subsystems.Intake;
-import frc.subsystems.Shooter;
+import frc.subsystems.*;
 //Commands Imports
-import frc.commands.DefaultDrive;
-import frc.commands.AutoConveyor;
-import frc.commands.Manual_Intake;
-import frc.commands.AutoDrive;
+import frc.commands.*;
 // Contains joysticks,calls commands and subsystems
 
 public class RobotContainer {    
@@ -35,6 +29,7 @@ public class RobotContainer {
     private final Conveyor conveyor = new Conveyor();
     private final Intake intake = new Intake();
     private final Shooter shooter = new Shooter();
+    private final Elevator elevator = new Elevator();
     private Command Automode = new AutoDrive(drivetrain, shooter, conveyor);
 
     //Joystick and Gamepad buttons
@@ -49,6 +44,7 @@ public class RobotContainer {
         drivetrain.setDefaultCommand(new DefaultDrive(drivetrain, joystick));
         conveyor.setDefaultCommand(new AutoConveyor(conveyor, gamepad));
         intake.setDefaultCommand(new Manual_Intake(intake, gamepad));
+        elevator.setDefaultCommand(new ManualElevator(elevator, joystick.getPOV()));
     }
 
 
