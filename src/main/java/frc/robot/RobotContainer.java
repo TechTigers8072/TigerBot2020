@@ -29,7 +29,7 @@ public class RobotContainer {
     private final Conveyor conveyor = new Conveyor();
     private final Intake intake = new Intake();
     private final Shooter shooter = new Shooter();
-    private final Elevator elevator = new Elevator();
+    // private final Elevator elevator = new Elevator();
     private Command Automode = new AutoDrive(drivetrain, shooter, conveyor);
 
     //Joystick and Gamepad buttons
@@ -37,6 +37,7 @@ public class RobotContainer {
     private final JoystickButton shooterButton = new JoystickButton(this.gamepad, 6);
     private final JoystickButton shooterIncSpeedButton = new JoystickButton(this.gamepad, 1);
     private final JoystickButton shooterDecSpeedButton = new JoystickButton(this.gamepad, 2);
+    private final JoystickButton conveyorAutoOverrideButton = new JoystickButton(this.gamepad, 3);
 
     //Contains subsystems, OI devices, and commands.
     public RobotContainer(){
@@ -44,7 +45,7 @@ public class RobotContainer {
         drivetrain.setDefaultCommand(new DefaultDrive(drivetrain, joystick));
         conveyor.setDefaultCommand(new AutoConveyor(conveyor, gamepad));
         intake.setDefaultCommand(new Manual_Intake(intake, gamepad));
-        elevator.setDefaultCommand(new ManualElevator(elevator, joystick.getPOV()));
+        // elevator.setDefaultCommand(new ManualElevator(elevator, joystick.getPOV()));
     }
 
 
@@ -56,7 +57,8 @@ public class RobotContainer {
         shooterButton.whenReleased(new InstantCommand(shooter::shooterOff, shooter));
         shooterIncSpeedButton.whenPressed(new InstantCommand(shooter::increaseSpeed, shooter));
         shooterDecSpeedButton.whenPressed(new InstantCommand(shooter::decreaseSpeed, shooter));
-
+        conveyorAutoOverrideButton.whenHeld(new InstantCommand(conveyor::setAutoConvey, conveyor));
+        conveyorAutoOverrideButton.whenReleased(new InstantCommand(conveyor::clearAutoConvey, conveyor));
     }
 
     public Command getautoCommand(){

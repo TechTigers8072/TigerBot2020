@@ -48,6 +48,18 @@ public class Conveyor extends SubsystemBase {
     conveyorMotor.set(js);
   }
 
+  public void setAutoConvey() {
+    autoConvey = true;
+  }
+
+  public void clearAutoConvey() {
+    autoConvey = false;
+  }
+
+  public boolean isAutoConvey() {
+    return autoConvey;
+  }
+
   public boolean detectFront() {
     boolean status = false;
     double dist = frontSensor.getRangeInches();

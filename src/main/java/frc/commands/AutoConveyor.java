@@ -9,6 +9,7 @@ package frc.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.subsystems.Conveyor;
 
 public class AutoConveyor extends CommandBase {
@@ -33,8 +34,9 @@ public class AutoConveyor extends CommandBase {
     boolean isBall2 = m_conveyor.detectMiddle();
     boolean isBall3 = m_conveyor.detectBack();
 
-    if (Math.abs(m_gamepad.getY(Joystick.Hand.kRight)) > 0.1)
+    if (m_conveyor.isAutoConvey())
     {
+      Subsystem.out.println("AutoConvey is set.");
       if (m_gamepad.getRawButtonPressed(5)){
         m_conveyor.moveMotor();
       }
